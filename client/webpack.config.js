@@ -11,6 +11,7 @@ const DIST_PATH = path.resolve(__dirname, '../dist');
 
 /** @type {import('webpack').Configuration} */
 const config = {
+  mode: process.env.NODE_ENV,
   devServer: {
     historyApiFallback: true,
     host: '0.0.0.0',
@@ -29,7 +30,6 @@ const config = {
       path.resolve(SRC_PATH, './index.jsx'),
     ],
   },
-  mode: 'none',
   module: {
     rules: [
       {
