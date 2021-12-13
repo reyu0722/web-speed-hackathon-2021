@@ -11,21 +11,18 @@ router.use(history());
 
 router.use(
   serveStatic(UPLOAD_PATH, {
-    etag: false,
     lastModified: false,
   }),
 );
 
 router.use(
   serveStatic(PUBLIC_PATH, {
-    etag: false,
     lastModified: false,
   }),
 );
 
 router.use(
   serveStatic(CLIENT_DIST_PATH, {
-    etag: false,
     lastModified: false,
   }),
 );
