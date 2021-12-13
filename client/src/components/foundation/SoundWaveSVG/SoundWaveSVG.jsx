@@ -36,8 +36,6 @@ import React from 'react';
   // chunk の平均の中から最大値を取る
   const max = Math.max(...peaks);
 
-  console.log(max)
-
   return { max, peaks };
 }
 
