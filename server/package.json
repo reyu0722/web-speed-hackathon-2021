@@ -5,13 +5,15 @@
   "license": "MPL-2.0",
   "main": "src/index.js",
   "scripts": {
-    "build": "echo noop",
+    "build": "babel src --out-dir dist",
+    "start": "node dist/index.js",
     "prestart": "npm-run-all prestart:clean prestart:init",
-    "start": "babel-node --experimental-wasm-threads src/index.js",
+    "dev": "babel-node --experimental-wasm-threads src/index.js",
     "prestart:clean": "rimraf ../upload",
     "prestart:init": "mkdirp ../upload/images ../upload/movies ../upload/sounds"
   },
   "dependencies": {
+    "@babel/cli": "^7.16.0",
     "@babel/core": "7.16.0",
     "@babel/node": "7.16.0",
     "@babel/preset-env": "7.16.4",
