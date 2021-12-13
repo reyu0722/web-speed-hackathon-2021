@@ -65,6 +65,7 @@ const config = {
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(SRC_PATH, './index.html'),
+      inject: false
     }),
   ],
   resolve: {
