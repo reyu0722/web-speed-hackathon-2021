@@ -5,8 +5,8 @@
   "license": "MPL-2.0",
   "main": "src/index.js",
   "scripts": {
-    "build": "babel src --out-dir dist",
-    "start": "node dist/index.js",
+    "build": "cross-env NODE_ENV=production babel src --out-dir dist",
+    "start": "cross-env NODE_ENV=production node dist/index.js",
     "prestart": "npm-run-all prestart:clean prestart:init",
     "dev": "babel-node --experimental-wasm-threads src/index.js",
     "prestart:clean": "rimraf ../upload",
@@ -23,6 +23,7 @@
     "body-parser": "1.19.0",
     "compression": "^1.7.4",
     "connect-history-api-fallback": "1.6.0",
+    "cross-env": "^7.0.3",
     "express": "4.17.1",
     "express-promise-router": "4.1.0",
     "express-session": "1.17.2",
