@@ -10,5 +10,5 @@ done
 
 for file in `\find ./images/profiles -maxdepth 1 -type f`; do
 	name=`basename $file .jpg`
-	convert -geometry 640x ./images/profiles/${name}.jpg ./images/profiles/avif/${name}.avif
+	convert -geometry 120x ./images/profiles/${name}.jpg ./images/profiles/avif/${name}.avif
 done
