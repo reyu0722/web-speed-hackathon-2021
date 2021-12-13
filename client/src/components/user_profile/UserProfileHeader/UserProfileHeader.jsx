@@ -1,5 +1,4 @@
 import FastAverageColor from 'fast-average-color';
-import moment from 'moment';
 import React from 'react';
 
 import { getProfileImagePath } from '../../../utils/get_path';
@@ -23,6 +22,8 @@ const UserProfileHeader = ({ user }) => {
     fac.destroy();
   }, []);
 
+  const date = new Date(user.createdAt)
+
   return (
     <header className="relative">
       <div className="h-32 bg-gray-300" style={{ backgroundColor: averageColor }}></div>
@@ -38,8 +39,8 @@ const UserProfileHeader = ({ user }) => {
             <FontAwesomeIcon iconType="calendar-alt" styleType="regular" />
           </span>
           <span>
-            <time dateTime={moment(user.createdAt).toISOString()}>
-              {moment(user.createdAt).locale('ja').format('LL')}
+            <time dateTime={date.toISOString()}>
+              {`${date.getFullYear()}年${date.getMonth()+1}月${date.getDate()}日`}
             </time>
             からサービスを利用しています
           </span>
