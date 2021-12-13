@@ -65,7 +65,6 @@ const config = {
       filename: 'styles/[name].css',
     }),
     new HtmlWebpackPlugin({
-      inject: false,
       template: path.resolve(SRC_PATH, './index.html'),
     }),
   ],
