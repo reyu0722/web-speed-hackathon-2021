@@ -8,6 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { convertSound } from '../../converters/convert_sound';
 import { UPLOAD_PATH } from '../../paths';
 import { extractMetadataFromSound } from '../../utils/extract_metadata_from_sound';
+import { makeSoundWaveSVG } from '../../utils/sound_svg'
 
 // 変換した音声の拡張子
 const EXTENSION = 'mp3';
@@ -33,6 +34,10 @@ router.post('/sounds', async (req, res) => {
 
   const filePath = path.resolve(UPLOAD_PATH, `./sounds/${soundId}.${EXTENSION}`);
   await fs.writeFile(filePath, converted);
+
+  const svg = await makeSoundWaveSVG(converted);
+  const svgPath = path.resolve(UPLOAD_PATH, `./sounds/${soundId}.svg`);
+  await fs.writeFile(svgPath, svg);
 
   return res.status(200).type('application/json').send({ artist, id: soundId, title });
 });
