@@ -13,7 +13,7 @@ import { FontAwesomeIcon } from '../FontAwesomeIcon';
 /**
  * @type {React.VFC<Props>}
  */
-const SoundPlayer = ({ sound }) => {
+const SoundPlayer = ({ sound, lazy }) => {
   const [currentTimeRatio, setCurrentTimeRatio] = useState(0);
   /** @type {React.ReactEventHandler<HTMLAudioElement>} */
   const handleTimeUpdate = useCallback((ev) => {
@@ -54,7 +54,7 @@ const SoundPlayer = ({ sound }) => {
           <AspectRatioBox aspectHeight={1} aspectWidth={10}>
             <div className="relative w-full h-full">
               <div className="absolute inset-0 w-full h-full">
-              <img width="10" height="1" className="w-full h-full" src={getSoundSvgPath(sound.id)} />
+              <img width="10" height="1" className="w-full h-full" src={getSoundSvgPath(sound.id)} loading={lazy ? "lazy" : "eager"} />
               </div>
               <div
                 className="absolute inset-0 w-full h-full bg-gray-300 opacity-75"

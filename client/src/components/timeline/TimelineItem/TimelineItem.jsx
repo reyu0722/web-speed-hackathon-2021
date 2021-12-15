@@ -32,7 +32,7 @@ const isClickedAnchorOrButton = (target, currentTarget) => {
  */
 
 /** @type {React.VFC<Props>} */
-const TimelineItem = ({ post }) => {
+const TimelineItem = ({ post, lazy }) => {
   /**
    * ボタンやリンク以外の箇所をクリックしたとき かつ 文字が選択されてないとき、投稿詳細ページに遷移する
    * @type {React.MouseEventHandler}
@@ -78,7 +78,7 @@ const TimelineItem = ({ post }) => {
           <p className="text-gray-800 leading-relaxed">{post.text}</p>
           {post.images?.length > 0 ? (
             <div className="relative mt-2 w-full">
-              <ImageArea images={post.images} />
+              <ImageArea images={post.images} lazy={lazy} />
             </div>
           ) : null}
           {post.movie ? (
@@ -88,7 +88,7 @@ const TimelineItem = ({ post }) => {
           ) : null}
           {post.sound ? (
             <div className="relative mt-2 w-full">
-              <SoundArea sound={post.sound} />
+              <SoundArea sound={post.sound} lazy={lazy} />
             </div>
           ) : null}
         </div>
