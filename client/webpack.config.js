@@ -14,6 +14,7 @@ const DIST_PATH = path.resolve(__dirname, '../dist');
 /** @type {import('webpack').Configuration} */
 const config = {
   mode: process.env.NODE_ENV,
+  devtool: process.env.NODE_ENV === 'development' ? 'inline-source-map' : false,
   devServer: {
     historyApiFallback: true,
     host: '0.0.0.0',
