@@ -11,32 +11,19 @@ router.use(history());
 
 router.use(
   serveStatic(UPLOAD_PATH, {
-    etag: true,
-    lastModified: true,
-    maxAge: 86400 * 1000 * 365,
-    immutable: true,
+    lastModified: false,
   }),
 );
 
 router.use(
   serveStatic(PUBLIC_PATH, {
-    etag: true,
-    lastModified: true,
-    maxAge: 86400 * 1000 * 365,
-    immutable: true,}),
+    lastModified: false,
+  }),
 );
 
 router.use(
   serveStatic(CLIENT_DIST_PATH, {
-    etag: true,
-    lastModified: true,
-    maxAge: 86400 * 1000 * 365,
-    immutable: true,
-    setHeaders: (res, path) => {
-      if (serveStatic.mime.lookup(path) === 'text/html') {
-        res.setHeader('Cache-Control', 'public, max-age=300, s-maxage=180')
-      }
-    }
+    lastModified: false,
   }),
 );
 
