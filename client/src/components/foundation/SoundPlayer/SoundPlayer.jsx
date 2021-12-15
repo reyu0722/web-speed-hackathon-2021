@@ -1,10 +1,9 @@
 import { h } from 'preact';
 import { useState, useCallback, useRef } from 'preact/hooks';
 
-import { getSoundPath } from '../../../utils/get_path';
+import { getSoundPath, getSoundSvgPath } from '../../../utils/get_path';
 import { AspectRatioBox } from '../AspectRatioBox';
 import { FontAwesomeIcon } from '../FontAwesomeIcon';
-import { SoundWaveSVG } from '../SoundWaveSVG';
 
 /**
  * @typedef {object} Props
@@ -55,7 +54,7 @@ const SoundPlayer = ({ sound }) => {
           <AspectRatioBox aspectHeight={1} aspectWidth={10}>
             <div className="relative w-full h-full">
               <div className="absolute inset-0 w-full h-full">
-                <SoundWaveSVG soundId={sound.id} />
+              <img width="10" height="1" className="w-full h-full" src={getSoundSvgPath(sound.id)} />
               </div>
               <div
                 className="absolute inset-0 w-full h-full bg-gray-300 opacity-75"
