@@ -63,8 +63,7 @@ const config = {
       filename: 'styles/[name].css',
     }),
     new HtmlWebpackPlugin({
-      template: path.resolve(SRC_PATH, './index.html'),
-      inject: false
+      template: path.resolve(SRC_PATH, './index.html')
     }),
     new CompressionPlugin({
       algorithm: "gzip",
