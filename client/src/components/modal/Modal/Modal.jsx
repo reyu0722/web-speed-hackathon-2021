@@ -1,7 +1,5 @@
 import { h } from 'preact';
 import { useEffect } from 'preact/hooks';
-import { createPortal } from 'preact/compat';
-import 'wicg-inert';
 
 /**
  * @typedef {object} Props
@@ -19,13 +17,7 @@ const Modal = ({ children, onRequestCloseModal }) => {
     };
   }, []);
 
-  // inert 属性を #app に付与して、アプリケーションが操作できないようにする
-  useEffect(() => {
-    document.getElementById('app').inert = true;
-    return () => {
-      document.getElementById('app').inert = false;
-    };
-  }, []);
+
 
   // Escape キーを入力すると、モーダルを閉じる
   useEffect(() => {
@@ -38,7 +30,7 @@ const Modal = ({ children, onRequestCloseModal }) => {
     return () => document.removeEventListener('keyup', handler);
   }, [onRequestCloseModal]);
 
-  return createPortal(
+  return (
     <div className="fixed z-10 bottom-0 left-0 right-0 top-0 flex items-center justify-center bg-black bg-opacity-50">
       <div className="absolute bottom-0 left-0 right-0 top-0" onClick={onRequestCloseModal}></div>
       <div className="flex flex-col items-center justify-center px-2 w-full h-4/6">
@@ -46,8 +38,7 @@ const Modal = ({ children, onRequestCloseModal }) => {
           <div className="relative w-full max-h-full overflow-auto">{children}</div>
         </div>
       </div>
-    </div>,
-    document.getElementById('modal'),
+    </div>
   );
 };
 

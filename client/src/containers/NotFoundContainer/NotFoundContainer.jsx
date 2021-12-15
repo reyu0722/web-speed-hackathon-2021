@@ -1,4 +1,4 @@
-import { h } from 'preact';
+import { h, Fragment } from 'preact';
 
 import { NotFoundPage } from '../../components/application/NotFoundPage';
 

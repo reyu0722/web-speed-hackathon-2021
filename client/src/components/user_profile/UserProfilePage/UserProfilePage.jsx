@@ -1,4 +1,4 @@
-import { h } from 'preact';
+import { h, Fragment } from 'preact';
 
 import { Timeline } from '../../timeline/Timeline';
 import { UserProfileHeader } from '../UserProfileHeader';

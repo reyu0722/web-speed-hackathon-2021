@@ -1,4 +1,4 @@
-import { h } from 'preact';
+import { h, Fragment } from 'preact';
 
 import { CommentList } from '../CommentList';
 import { PostItem } from '../PostItem';
