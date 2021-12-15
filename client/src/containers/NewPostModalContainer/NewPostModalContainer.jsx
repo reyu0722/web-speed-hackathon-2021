@@ -14,6 +14,7 @@ import { sendFile, sendJSON } from '../../utils/fetchers';
  * @returns {Promise<Models.Post>}
  */
 async function sendNewPost({ images, movie, sound, text }) {
+  // TODO
   const payload = {
     images: images ? await Promise.all(images.map((image) => sendFile('/api/v1/images', image))) : [],
     movie: movie ? await sendFile('/api/v1/movies', movie) : undefined,
