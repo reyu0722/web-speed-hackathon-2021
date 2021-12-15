@@ -26,7 +26,12 @@ router.use(
 router.use(
   serveStatic(CLIENT_DIST_PATH, {
     immutable: true,
-    maxAge: 1000 * 3600 * 24 * 365
+    maxAge: 1000 * 3600 * 24 * 365,
+    setHeaders: (res, path) => {
+      if (serveStatic.mime.lookup(path) === 'text/html') {
+        res.setHeader('Cache-Control', 'public, max-age=100')
+      }
+    }
   }),
 );
 
