@@ -34,12 +34,12 @@ const AppContainer = () => {
 
   return (
     <>
-      <AppPage
-        activeUser={activeUser}
-        onRequestOpenAuthModal={handleRequestOpenAuthModal}
-        onRequestOpenPostModal={handleRequestOpenPostModal}
-      >
-        <Suspense fallback={<Helmet><title>読込中 - CAwitter</title></Helmet>}>
+      <Suspense fallback={<Helmet><title>読込中 - CAwitter</title></Helmet>}>
+        <AppPage
+          activeUser={activeUser}
+          onRequestOpenAuthModal={handleRequestOpenAuthModal}
+          onRequestOpenPostModal={handleRequestOpenPostModal}
+        >
           <Routes>
             <Route element={<TimelineContainer />} path="/" />
             <Route element={<UserProfileContainer />} path="/users/:username" />
@@ -47,13 +47,13 @@ const AppContainer = () => {
             <Route element={<TermContainer />} path="/terms" />
             <Route element={<NotFoundContainer />} path="*" />
           </Routes>
-        </Suspense>
-      </AppPage>
+        </AppPage>
 
-      {modalType === 'auth' ? (
-        <AuthModalContainer onRequestCloseModal={handleRequestCloseModal} onUpdateActiveUser={setActiveUser} />
-      ) : null}
-      {modalType === 'post' ? <NewPostModalContainer onRequestCloseModal={handleRequestCloseModal} /> : null}
+        {modalType === 'auth' ? (
+          <AuthModalContainer onRequestCloseModal={handleRequestCloseModal} onUpdateActiveUser={setActiveUser} />
+        ) : null}
+        {modalType === 'post' ? <NewPostModalContainer onRequestCloseModal={handleRequestCloseModal} /> : null}
+      </Suspense>
     </>
   );
 };
