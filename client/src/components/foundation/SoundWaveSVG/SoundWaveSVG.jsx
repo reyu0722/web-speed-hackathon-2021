@@ -12,7 +12,7 @@ import { getSoundSvgPath } from '../../../utils/get_path';
 const SoundWaveSVG = ({ soundId }) => {
 
   return (
-    <img className="w-full h-full" src={getSoundSvgPath(soundId)} loading="lazy" />
+    <img className="w-full h-full" src={getSoundSvgPath(soundId)} />
   );
 };
 

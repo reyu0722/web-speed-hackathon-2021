@@ -18,7 +18,7 @@ const CommentItem = ({ comment }) => {
         <div className="flex-grow-0 flex-shrink-0 pr-2 sm:pr-4">
           <Link to={`/users/${comment.user.username}`}>
             <a className="block w-8 h-8 bg-gray-300 border border-gray-300 rounded-full hover:opacity-75 overflow-hidden sm:w-12 sm:h-12">
-              <img alt={comment.user.profileImage.alt} src={getProfileImagePath(comment.user.profileImage.id)} />
+              <img width="48" height="48" alt={comment.user.profileImage.alt} src={getProfileImagePath(comment.user.profileImage.id)} />
             </a>
           </Link>
         </div>

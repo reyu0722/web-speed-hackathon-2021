@@ -44,7 +44,6 @@ const AppContainer = () => {
 
   return (
     <>
-
         <AppPage
           activeUser={activeUser}
           onRequestOpenAuthModal={handleRequestOpenAuthModal}
