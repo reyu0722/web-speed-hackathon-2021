@@ -41,12 +41,12 @@ export function useInfiniteFetch(apiPath, fetcher) {
       offset,
     };
 
-    const promise = fetcher(`${apiPath }?offset=${offset}&limit=${LIMIT}`);
+    const promise = fetcher(apiPath);
 
     promise.then((allData) => {
       setResult((cur) => ({
         ...cur,
-        data: [...cur.data, ...allData],
+        data: [...cur.data, ...allData.slice(offset, offset + LIMIT)],
         isLoading: false,
       }));
       internalRef.current = {
