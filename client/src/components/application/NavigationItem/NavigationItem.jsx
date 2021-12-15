@@ -1,6 +1,6 @@
 import classNames from 'classnames';
-import React from 'react';
-import { Link, useLocation } from 'wouter';
+import { h } from 'preact';
+import { Link, useLocation } from 'wouter-preact';
 
 /**
  * @typedef {object} Props

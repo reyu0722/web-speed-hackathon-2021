@@ -1,4 +1,4 @@
-import React from 'react';
+import { h } from 'preact';
 import { getSoundSvgPath } from '../../../utils/get_path';
 
 /**

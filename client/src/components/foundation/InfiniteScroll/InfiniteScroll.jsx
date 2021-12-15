@@ -1,5 +1,5 @@
-import React from 'react';
-
+import { h, Fragment } from 'preact';
+import { useEffect, useRef } from 'preact/hooks';
 /**
  * @typedef {object} Props
  * @property {React.ReactNode} children
@@ -11,9 +11,9 @@ import React from 'react';
 const InfiniteScroll = ({ children, fetchMore, items }) => {
   const latestItem = items[items.length - 1];
 
-  const observerRef = new React.useRef(null);
+  const observerRef = new useRef(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!observerRef) return
 
     const handler = ([change]) => {

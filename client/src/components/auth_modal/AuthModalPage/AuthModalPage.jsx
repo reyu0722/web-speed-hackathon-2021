@@ -1,5 +1,6 @@
-import React from 'react';
-import { Link } from 'wouter';
+import { h } from 'preact';
+import { Link } from 'wouter-preact';
+import { useState, useCallback } from 'preact/hooks';
 
 import { ModalErrorMessage } from '../../modal/ModalErrorMessage';
 import { ModalSubmitButton } from '../../modal/ModalSubmitButton';
@@ -25,9 +26,9 @@ import { AuthInput } from '../AuthInput';
 /** @type {React.VFC<Props>} */
 const AuthModalPage = ({ hasError, isLoading, onRequestCloseModal, onResetError, onSubmit }) => {
   /** @type {[SubmitParams, (params: SubmitParams) => SubmitParams]} */
-  const [params, setParams] = React.useState({ name: '', password: '', type: 'signin', username: '' });
+  const [params, setParams] = useState({ name: '', password: '', type: 'signin', username: '' });
 
-  const handleToggleType = React.useCallback(() => {
+  const handleToggleType = useCallback(() => {
     onResetError();
     setParams((params) => ({
       ...params,
@@ -36,7 +37,7 @@ const AuthModalPage = ({ hasError, isLoading, onRequestCloseModal, onResetError,
   }, [onResetError]);
 
   /** @type {React.ChangeEventHandler<HTMLInputElement>} */
-  const handleChangeUsername = React.useCallback((ev) => {
+  const handleChangeUsername = useCallback((ev) => {
     const value = ev.currentTarget.value;
     setParams((params) => ({
       ...params,
@@ -45,7 +46,7 @@ const AuthModalPage = ({ hasError, isLoading, onRequestCloseModal, onResetError,
   }, []);
 
   /** @type {React.ChangeEventHandler<HTMLInputElement>} */
-  const handleChangeName = React.useCallback((ev) => {
+  const handleChangeName = useCallback((ev) => {
     const value = ev.currentTarget.value;
     setParams((params) => ({
       ...params,
@@ -54,7 +55,7 @@ const AuthModalPage = ({ hasError, isLoading, onRequestCloseModal, onResetError,
   }, []);
 
   /** @type {React.ChangeEventHandler<HTMLInputElement>} */
-  const handleChangePassword = React.useCallback((ev) => {
+  const handleChangePassword = useCallback((ev) => {
     const value = ev.currentTarget.value;
     setParams((params) => ({
       ...params,
@@ -63,7 +64,7 @@ const AuthModalPage = ({ hasError, isLoading, onRequestCloseModal, onResetError,
   }, []);
 
   /** @type {React.FormEventHandler<HTMLFormElement>} */
-  const handleSubmit = React.useCallback(
+  const handleSubmit = useCallback(
     (ev) => {
       ev.preventDefault();
       onResetError();

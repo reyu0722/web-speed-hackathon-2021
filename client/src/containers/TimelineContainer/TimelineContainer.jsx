@@ -1,4 +1,4 @@
-import React from 'react';
+import { h } from 'preact';
 
 import { InfiniteScroll } from '../../components/foundation/InfiniteScroll';
 import { TimelinePage } from '../../components/timeline/TimelinePage';

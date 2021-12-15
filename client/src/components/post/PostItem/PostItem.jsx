@@ -1,5 +1,5 @@
-import React from 'react';
-import {Link} from "wouter"
+import { h } from 'preact';
+import {Link} from "wouter-preact"
 
 import { getProfileImagePath } from '../../../utils/get_path';
 import { ImageArea } from '../../post/ImageArea';

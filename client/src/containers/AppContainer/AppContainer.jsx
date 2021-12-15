@@ -1,5 +1,6 @@
-import React from 'react';
-import { Link, Route, Switch, useLocation } from "wouter"
+import { h, Fragment } from 'preact';
+import { useState, useCallback, useEffect } from 'preact/hooks';
+import { Link, Route, Switch, useLocation } from "wouter-preact"
 
 import { AppPage } from '../../components/application/AppPage';
 import { fetchJSON } from '../../utils/fetchers';
@@ -25,20 +26,20 @@ import UserProfileContainer from '../UserProfileContainer'
 /** @type {React.VFC} */
 const AppContainer = () => {
   const [ pathname ] = useLocation();
-  React.useEffect(() => {
+  useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
-  const [activeUser, setActiveUser] = React.useState(null);
+  const [activeUser, setActiveUser] = useState(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     fetchJSON("api/v1/me").then(res => setActiveUser(res))
   }, []);
 
-  const [modalType, setModalType] = React.useState('none');
-  const handleRequestOpenAuthModal = React.useCallback(() => setModalType('auth'), []);
-  const handleRequestOpenPostModal = React.useCallback(() => setModalType('post'), []);
-  const handleRequestCloseModal = React.useCallback(() => setModalType('none'), []);
+  const [modalType, setModalType] = useState('none');
+  const handleRequestOpenAuthModal = useCallback(() => setModalType('auth'), []);
+  const handleRequestOpenPostModal = useCallback(() => setModalType('post'), []);
+  const handleRequestCloseModal = useCallback(() => setModalType('none'), []);
 
 
   return (

@@ -1,5 +1,5 @@
-import React from 'react';
-import { useRoute } from 'wouter';
+import { h } from 'preact';
+import { useRoute } from 'wouter-preact';
 
 import { InfiniteScroll } from '../../components/foundation/InfiniteScroll';
 import { PostPage } from '../../components/post/PostPage';

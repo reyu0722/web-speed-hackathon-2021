@@ -1,4 +1,4 @@
-import React from 'react';
+import { h } from 'preact';
 
 import { SoundPlayer } from '../../foundation/SoundPlayer';
 

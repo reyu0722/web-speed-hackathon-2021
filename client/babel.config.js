@@ -1,10 +1,8 @@
 module.exports = {
-  presets: [
-    [
-      '@babel/preset-react',
-      {
-        development: process.env.NODE_ENV === true,
-      },
-    ],
-  ],
+  "plugins": [
+    ["@babel/plugin-transform-react-jsx", {
+      "pragma": "h",
+      "pragmaFrag": "Fragment",
+    }]
+  ]
 };

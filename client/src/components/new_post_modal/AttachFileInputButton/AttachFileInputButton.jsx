@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React from 'react';
+import { h } from 'preact';
 
 /**
  * @typedef {object} Props

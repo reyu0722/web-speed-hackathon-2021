@@ -1,4 +1,4 @@
-import React from 'react';
+import { h } from 'preact';
 
 import { NotFoundPage } from '../../components/application/NotFoundPage';
 

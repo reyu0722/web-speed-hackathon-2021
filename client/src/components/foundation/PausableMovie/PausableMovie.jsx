@@ -1,5 +1,6 @@
 import classNames from 'classnames';
-import React, {useRef, useEffect, useState} from 'react';
+import { h } from 'preact';
+import { useState, useCallback, useEffect, useRef } from 'preact/hooks';
 
 import { AspectRatioBox } from '../AspectRatioBox';
 import { FontAwesomeIcon } from '../FontAwesomeIcon';
@@ -33,7 +34,7 @@ const PausableMovie = ({ src }) => {
     return
   }, [])
 
-  const handleClick = React.useCallback(() => {
+  const handleClick = useCallback(() => {
     if (!videoRef.current) return
 
     if (videoRef.current.paused) {

@@ -1,5 +1,6 @@
-import React from 'react';
-import { Link, useLocation } from 'wouter';
+import { h } from 'preact';
+import { useCallback } from 'preact/hooks';
+import { Link, useLocation } from 'wouter-preact';
 
 import { getProfileImagePath } from '../../../utils/get_path';
 import { ImageArea } from '../../post/ImageArea';
@@ -37,7 +38,7 @@ const TimelineItem = ({ post }) => {
    * @type {React.MouseEventHandler}
    */
   const [location, setLocation] = useLocation();
-  const handleClick = React.useCallback(
+  const handleClick = useCallback(
     (ev) => {
       const isSelectedText = document.getSelection().isCollapsed === false;
       if (!isClickedAnchorOrButton(ev.target, ev.currentTarget) && !isSelectedText) {

@@ -1,4 +1,4 @@
-import React from 'react';
+import { h } from 'preact';
 /**
  * @typedef {object} Props
  * @property {string} alt

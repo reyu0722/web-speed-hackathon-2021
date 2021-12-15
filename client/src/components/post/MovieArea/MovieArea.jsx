@@ -1,4 +1,4 @@
-import React from 'react';
+import { h } from 'preact';
 
 import { getMoviePath } from '../../../utils/get_path';
 import { PausableMovie } from '../../foundation/PausableMovie';

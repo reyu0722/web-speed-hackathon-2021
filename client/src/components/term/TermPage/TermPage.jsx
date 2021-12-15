@@ -1,4 +1,4 @@
-import React from 'react';
+import { h } from 'preact';
 
 /** @type {React.VFC} */
 const TermPage = () => {

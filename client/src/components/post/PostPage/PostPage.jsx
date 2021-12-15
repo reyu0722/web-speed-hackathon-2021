@@ -1,4 +1,4 @@
-import React from 'react';
+import { h } from 'preact';
 
 import { CommentList } from '../CommentList';
 import { PostItem } from '../PostItem';
