@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useRoute } from 'wouter';
 
 import { InfiniteScroll } from '../../components/foundation/InfiniteScroll';
 import { PostPage } from '../../components/post/PostPage';
@@ -10,7 +10,8 @@ import NotFoundContainer from '../NotFoundContainer';
 
 /** @type {React.VFC} */
 const PostContainer = () => {
-  const { postId } = useParams();
+  const [match, params] = useRoute("/posts/:postId")
+  const { postId } = params;
 
   const { data: post, isLoading: isLoadingPost } = useFetch(`/api/v1/posts/${postId}`, fetchJSON);
 

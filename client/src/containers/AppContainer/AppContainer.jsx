@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Link, Route, Switch, useLocation } from "wouter"
 
 import { AppPage } from '../../components/application/AppPage';
 import { fetchJSON } from '../../utils/fetchers';
@@ -14,7 +14,7 @@ const UserProfileContainer = React.lazy(() => import('../UserProfileContainer'))
 
 /** @type {React.VFC} */
 const AppContainer = () => {
-  const { pathname } = useLocation();
+  const [ pathname ] = useLocation();
   React.useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
@@ -39,13 +39,13 @@ const AppContainer = () => {
           onRequestOpenAuthModal={handleRequestOpenAuthModal}
           onRequestOpenPostModal={handleRequestOpenPostModal}
         >
-          <Routes>
-            <Route element={<TimelineContainer />} path="/" />
-            <Route element={<UserProfileContainer />} path="/users/:username" />
-            <Route element={<PostContainer />} path="/posts/:postId" />
-            <Route element={<TermContainer />} path="/terms" />
-            <Route element={<NotFoundContainer />} path="*" />
-          </Routes>
+          <Switch>
+            <Route component={TimelineContainer} path="/" />
+            <Route component={UserProfileContainer} path="/users/:username" />
+            <Route component={PostContainer} path="/posts/:postId" />
+            <Route component={TermContainer} path="/terms" />
+            <Route component={NotFoundContainer} path="/:all" />
+          </Switch>
         </AppPage>
 
         {modalType === 'auth' ? (

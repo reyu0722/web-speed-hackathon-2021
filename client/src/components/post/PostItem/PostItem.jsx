@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from "wouter"
 
 import { getProfileImagePath } from '../../../utils/get_path';
 import { ImageArea } from '../../post/ImageArea';
@@ -19,11 +19,10 @@ const PostItem = ({ post }) => {
       <div className="pb-4 pt-4 px-4 border-b border-gray-300">
         <div className="flex items-center justify-center">
           <div className="flex-grow-0 flex-shrink-0 pr-2">
-            <Link
-              className="block w-14 h-14 bg-gray-300 border border-gray-300 rounded-full hover:opacity-95 overflow-hidden sm:w-16 sm:h-16"
-              to={`/users/${post.user.username}`}
-            >
-              <img alt={post.user.profileImage.alt} src={getProfileImagePath(post.user.profileImage.id)} loading="lazy" />
+            <Link to={`/users/${post.user.username}`}>
+              <a className="block w-14 h-14 bg-gray-300 border border-gray-300 rounded-full hover:opacity-95 overflow-hidden sm:w-16 sm:h-16">
+                <img alt={post.user.profileImage.alt} src={getProfileImagePath(post.user.profileImage.id)} loading="lazy" />
+              </a>
             </Link>
           </div>
           <div className="flex-grow flex-shrink min-w-0 whitespace-nowrap overflow-hidden overflow-ellipsis">
