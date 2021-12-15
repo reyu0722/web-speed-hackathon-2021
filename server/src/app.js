@@ -22,14 +22,6 @@ app.use(compression())
 app.use(bodyParser.json());
 app.use(bodyParser.raw({ limit: '10mb' }));
 
-app.use((_req, res, next) => {
-  res.header({
-    'Cache-Control': 'max-age=0',
-    Connection: 'close',
-  });
-  return next();
-});
-
 app.use('/api/v1', apiRouter);
 app.use(staticRouter);
 
