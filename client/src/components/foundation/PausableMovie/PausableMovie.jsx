@@ -20,6 +20,16 @@ const PausableMovie = ({ src }) => {
   const videoRef = useRef(null)
   const [isPlaying, setIsPlaying] = useState(true)
 
+  useEffect(() => {
+    if (!videoRef.current) return
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    }
+    return
+  }, [])
+
   const handleClick = useCallback(() => {
     if (!videoRef.current) return
 
