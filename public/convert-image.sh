@@ -3,12 +3,10 @@
 mkdir ./images/avif
 mkdir ./images/profiles/avif
 
-for file in `\find ./images -maxdepth 1 -type f`; do
-	name=`basename $file .jpg`
-	convert -geometry 640x ./images/${name}.jpg ./images/avif/${name}.avif
+for file in `\find ./old-images -maxdepth 1 -type f`; do
+	npx @squoosh/cli --resize '{"enabled":true,"width":640}' --avif '{}' --output-dir ./newimages $file
 done
 
-for file in `\find ./images/profiles -maxdepth 1 -type f`; do
-	name=`basename $file .jpg`
-	convert -geometry 120x ./images/profiles/${name}.jpg ./images/profiles/avif/${name}.avif
+for file in `\find ./old-images/profiles -maxdepth 1 -type f`; do
+	npx @squoosh/cli --resize '{"enabled":true,"width":640}' --avif '{}' --output-dir ./newimages/profiles $file
 done
