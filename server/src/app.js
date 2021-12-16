@@ -3,6 +3,7 @@ import Express from 'express';
 import session from 'express-session';
 import compression from "compression"
 import Fastify from "fastify"
+import history from 'connect-history-api-fallback';
 
 import { apiRouter } from './routes/api';
 import { staticRouter } from './routes/static';
@@ -30,7 +31,8 @@ const createApp = async () => {
   app.use('/api/v1', apiRouter);
 
   app.use(compression())
-  app.use(staticRouter);
+  app.use(history())
+  app.register(staticRouter);
 
   return app
 }
