@@ -5,7 +5,7 @@ import { insertSeeds } from './seeds';
 import { sequelize } from './sequelize';
 
 async function main() {
-  const server = http.createServer(app);
+  const server = await app();
 
   // データベースの初期化をします
   await sequelize.sync({
@@ -14,9 +14,8 @@ async function main() {
   });
   await insertSeeds();
 
-  server.listen(Number(process.env.PORT || 3000), '0.0.0.0', () => {
-    const address = server.address();
-    console.log(`Listening on ${address.address}:${address.port}`);
+  server.listen(Number(process.env.PORT || 3000), '0.0.0.0', (err, address) => {
+    console.log(`Listening on ${address}`);
   });
 }
 

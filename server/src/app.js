@@ -2,29 +2,37 @@ import bodyParser from 'body-parser';
 import Express from 'express';
 import session from 'express-session';
 import compression from "compression"
+import Fastify from "fastify"
 
 import { apiRouter } from './routes/api';
 import { staticRouter } from './routes/static';
 
-const app = Express();
+const createApp = async () => {
 
-app.set('trust proxy', true);
+  const app = Fastify({
+    trustProxy: true
+  });
 
-app.use(
-  session({
-    proxy: true,
-    resave: false,
-    saveUninitialized: false,
-    secret: 'secret',
-  }),
-);
+  await app.register(require('fastify-express'))
 
-app.use(bodyParser.json());
-app.use(bodyParser.raw({ limit: '10mb' }));
+  app.use(
+    session({
+      proxy: true,
+      resave: false,
+      saveUninitialized: false,
+      secret: 'secret',
+    }),
+  );
 
-app.use('/api/v1', apiRouter);
+  app.use(bodyParser.json());
+  app.use(bodyParser.raw({ limit: '10mb' }));
 
-app.use(compression())
-app.use(staticRouter);
+  app.use('/api/v1', apiRouter);
 
-export { app };
+  app.use(compression())
+  app.use(staticRouter);
+
+  return app
+}
+
+export { createApp as app };
