@@ -1,7 +1,7 @@
 import path from 'path';
 
 const PUBLIC_PATH = path.resolve(__dirname, '../../public');
-const UPLOAD_PATH = path.resolve(__dirname, '../../upload');
+const UPLOAD_PATH = path.resolve(__dirname, '../../public');
 const CLIENT_DIST_PATH = path.resolve(__dirname, '../../dist');
 const DATABASE_PATH = path.resolve(__dirname, '../database.sqlite');
 
