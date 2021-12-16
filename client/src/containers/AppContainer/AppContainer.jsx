@@ -1,20 +1,20 @@
 import { h, Fragment } from 'preact';
 import { useState, useCallback, useEffect } from 'preact/hooks';
 import { Link, Route, Switch, useLocation } from "wouter-preact"
+import {Suspense, lazy} from "preact/compat"
 
 import { AppPage } from '../../components/application/AppPage';
 import { fetchJSON } from '../../utils/fetchers';
 
-/*
-const AuthModalContainer  = React.lazy(() => import('../AuthModalContainer'));
-const NewPostModalContainer = React.lazy(() => import('../NewPostModalContainer'));
-const NotFoundContainer = React.lazy(() => import('../NotFoundContainer'));
-const PostContainer = React.lazy(() => import('../PostContainer'));
-const TermContainer = React.lazy(() => import('../TermContainer'));
-const TimelineContainer = React.lazy(() => import('../TimelineContainer'));
-const UserProfileContainer = React.lazy(() => import('../UserProfileContainer'));
-*/
+const AuthModalContainer  = lazy(() => import('../AuthModalContainer'));
+const NewPostModalContainer = lazy(() => import('../NewPostModalContainer'));
+const NotFoundContainer = lazy(() => import('../NotFoundContainer'));
+const PostContainer = lazy(() => import('../PostContainer'));
+const TermContainer = lazy(() => import('../TermContainer'));
+const TimelineContainer = lazy(() => import('../TimelineContainer'));
+const UserProfileContainer = lazy(() => import('../UserProfileContainer'));
 
+/*
 import AuthModalContainer from '../AuthModalContainer'
 import NewPostModalContainer from '../NewPostModalContainer'
 import NotFoundContainer from '../NotFoundContainer'
@@ -22,6 +22,7 @@ import PostContainer from '../PostContainer'
 import TermContainer from '../TermContainer'
 import TimelineContainer from '../TimelineContainer'
 import UserProfileContainer from '../UserProfileContainer'
+*/
 
 /** @type {React.VFC} */
 const AppContainer = () => {
@@ -44,6 +45,7 @@ const AppContainer = () => {
 
   return (
     <>
+      <Suspense fallback={ <Loading /> }>
         <AppPage
           activeUser={activeUser}
           onRequestOpenAuthModal={handleRequestOpenAuthModal}
@@ -62,6 +64,7 @@ const AppContainer = () => {
           <AuthModalContainer onRequestCloseModal={handleRequestCloseModal} onUpdateActiveUser={setActiveUser} />
         ) : null}
         {modalType === 'post' ? <NewPostModalContainer onRequestCloseModal={handleRequestCloseModal} /> : null}
+      </Suspense>
     </>
   );
 };
