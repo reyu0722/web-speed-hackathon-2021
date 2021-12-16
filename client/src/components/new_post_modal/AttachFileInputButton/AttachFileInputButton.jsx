@@ -21,7 +21,7 @@ const AttachFileInputButton = ({ accept, active, icon, onChange }) => {
       >
         {icon}
       </span>
-      <input multiple accept={accept} className="sr-only" onChange={onChange} type="file" />
+      <input multiple accept={accept} className="sr-only" onInput={onChange} type="file" />
     </label>
   );
 };

@@ -17,7 +17,7 @@ const AuthInput = ({ autoComplete, label, onChange, type }) => {
         <input
           autoComplete={autoComplete}
           className="border-b focus:border-b-2 border-green-300 focus:border-green-600 focus:outline-none"
-          onChange={onChange}
+          onInput={onChange}
           type={type}
         />
       </p>

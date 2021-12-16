@@ -103,7 +103,7 @@ const NewPostModalPage = ({ hasError, isLoading, onResetError, onSubmit }) => {
       <form className="flex flex-col items-center w-full" onSubmit={handleSubmit}>
         <textarea
           className="placeholder-gray-300 p-4 w-full h-24 border border-gray-300 rounded resize-none"
-          onChange={handleChangeText}
+          onInput={handleChangeText}
           placeholder="いまなにしてる？"
         />
         <p className="flex items-center justify-evenly mt-4 w-full text-gray-900">
