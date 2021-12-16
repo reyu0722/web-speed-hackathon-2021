@@ -1,47 +1,13 @@
-
+import history from 'connect-history-api-fallback';
 import Router from 'express-promise-router';
 import serveStatic from 'serve-static';
 
-
 import { CLIENT_DIST_PATH, PUBLIC_PATH, UPLOAD_PATH } from '../paths';
 
+const router = Router();
+
 // SPA 対応のため、ファイルが存在しないときに index.html を返す
-
-const routes = async (router) => {
-  router.register(async (instance) => {
-    instance.register(require('fastify-static'), {
-      root: UPLOAD_PATH,
-      wildcard: false,
-      setHeaders: (res) => {
-        res.setHeader('Cache-Control', 'public, max-age=31536000, immutable')
-      }
-    })
-  })
-
-  router.register(async (instance) => {
-    instance.register(require('fastify-static'), {
-      root: PUBLIC_PATH,
-      wildcard: false,
-      setHeaders: (res) => {
-        res.setHeader('Cache-Control', 'public, max-age=31536000, immutable')
-      }
-    })
-  })
-
-  router.register(async (instance) => {
-    instance.register(require('fastify-static'), {
-      root: CLIENT_DIST_PATH,
-      setHeaders: (res) => {
-        res.setHeader('Cache-Control', 'public, max-age=31536000, immutable')
-      }
-    })
-    .setNotFoundHandler((req, res) => {
-      res.sendFile('index.html')
-    })
-  })
-}
-
-/*
+router.use(history());
 
 router.use(
   serveStatic(UPLOAD_PATH, {
@@ -68,6 +34,5 @@ router.use(
     }
   }),
 );
-*/
 
-export { routes as staticRouter };
+export { router as staticRouter };
