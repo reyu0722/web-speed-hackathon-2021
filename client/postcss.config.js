@@ -6,8 +6,6 @@ module.exports = {
   plugins: [
     postcssImport(),
     tailwindcss(),
-    postcssPresetEnv({
-      stage: 3,
-    }),
+    postcssPresetEnv({ browsers: 'last 1 Chrome version' }),
   ],
 };
